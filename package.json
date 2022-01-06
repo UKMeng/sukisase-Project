@@ -1,0 +1,26 @@
+{
+  "name": "sukisase-project",
+  "version": "1.0.0",
+  "description": "--- source: category: [[爬虫项目]] tag: #TypeScript #东京03 #爬虫 #YouTube time:2022-01-06 11:59 ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UKMeng/sukisase-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UKMeng/sukisase-Project/issues"
+  },
+  "homepage": "https://github.com/UKMeng/sukisase-Project#readme",
+  "devDependencies": {
+    "@types/cheerio": "^0.22.30",
+    "@types/superagent": "^4.1.14",
+    "cheerio": "^1.0.0-rc.10",
+    "superagent": "^6.1.0"
+  }
+}
