@@ -16,7 +16,7 @@ time:2022-01-06 11:59
 
 ## 实现步骤
 
-- [ ] 对单个页面（https://radioupdate.net/nhkr1/sukisase/20211223/）进行信息爬取和数据处理(crawler.ts)
+- [x] 对单个页面（https://radioupdate.net/nhkr1/sukisase/20211223) 进行信息爬取和数据处理(crawler.ts)
 - [ ] 获取所有页面的链接通过crawler.ts进行爬取并把处理好的数据存入JSON文件
 - [ ] 根据JSON文件中的数据从YouTube上批量下载视频并重命名
 
