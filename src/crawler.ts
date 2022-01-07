@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import cheerio from 'cheerio';
-
+const fs = require('fs');
 export interface Program{
     guestName: string;
     conteName: string;
@@ -40,12 +40,12 @@ export class Crawler{
         const intro = $element(".entry-content.cf > p").text();
         const re = /コント「(.*?)」/;
         const conName : string = (re.test(intro)) ? intro.match(re)[1] : 'SP';
-
+        /*
         console.log(programLink);
         console.log(programGuest);
         console.log(oaDay);
         console.log(conName);
-
+        */
         const Item : Program = {
             guestName : programGuest,
             conteName : conName,
@@ -54,19 +54,6 @@ export class Crawler{
         };
         return Item;       
     }
-    // 保存结果
-    /*
-    async saveProgramItems(result: Program[]){
-
-        fs.writeFile('./data/radio.json', JSON.stringify(result), {flag: 'a'}, (err: any) => {
-            if(err) {
-                console.error(err);
-                return;
-            }
-            console.log('Write Done');
-        });
-    }
-    */
     async getContext(url: string){
         const html = await this.getHtml(url);
         const $element = await this.loadHtml(html);
@@ -85,6 +72,17 @@ export class Crawler{
         // this.saveProgramItems(programItems);
     }
     constructor(){}
+
+    async saveProgramItems(result: Program[]){
+        const data = {programInfo: result};
+        fs.writeFile('./data/radio.json', JSON.stringify(data), {flag: 'a'}, (err: any) => {
+            if(err) {
+                console.error(err);
+                return;
+            }
+            console.log('Write Done');
+        });
+    }
 }
 
 // const p1 = new Getprogram('https://radioupdate.net/nhkr1/sukisase/20211216/');

@@ -1,9 +1,7 @@
----
 source:
 category: 爬虫项目
 tag: #TypeScript #东京03 #爬虫 #YouTube
 time:2022-01-06 11:59
----
 
 ## 实现目标
 
@@ -16,8 +14,8 @@ time:2022-01-06 11:59
 
 ## 实现步骤
 
-- [x] 对单个页面（https://radioupdate.net/nhkr1/sukisase/20211223) 进行信息爬取和数据处理(crawler.ts)
-- [ ] 获取所有页面的链接通过crawler.ts进行爬取并把处理好的数据存入JSON文件
+- [x] 对单个页面（https://radioupdate.net/nhkr1/sukisase/20211223/） 进行信息爬取和数据处理(crawler.ts)
+- [x] 获取所有页面的链接通过crawler.ts进行爬取并把处理好的数据存入JSON文件
 - [ ] 根据JSON文件中的数据从YouTube上批量下载视频并重命名
 
 
@@ -35,6 +33,7 @@ tsc --init
 -   ts-node(省去编译ts这一步骤，方便调试)
 -   superagent(用来发送请求)
 -   cheerio（用来解析获取到的html结构）
+-   single-line-log (用来实现进度条)
 
 以及两个声明模块
 -   @types/superagent
@@ -42,5 +41,5 @@ tsc --init
 
 ```TypeScript
 npm install -g ts-node
-npm install -D superangent cheerio @types/superagent @types/cheerio
+npm install -D superangent cheerio single-line-log @types/superagent @types/cheerio @types/single-line-log
 ```
