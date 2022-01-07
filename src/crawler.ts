@@ -9,11 +9,9 @@ export interface Program{
 }
 
 export class Crawler{
-    private url: string;
-    public programItem: Program;
     // 获取html
-    async getHtml(){
-        const programHtml = await superagent.get(this.url);
+    async getHtml(url: string){
+        const programHtml = await superagent.get(url);
         return programHtml.text;
     }
     // 解析html
@@ -23,7 +21,7 @@ export class Crawler{
     // 获取节目信息
     async getProgramInfo($element: any){
         // 获取链接
-        const programLink : string = $element(".video > iframe").attr('src').replace('?feature=oembed', '');
+        const programLink : string = $element(".video > iframe").attr('src').replace('?feature=oembed', '').replace("embed/","watch?v=");
 
         // 获取嘉宾名字
         let perfromerName : string[] = [];
@@ -58,7 +56,8 @@ export class Crawler{
     }
     // 保存结果
     /*
-    async saveProgramItems(result: Program){
+    async saveProgramItems(result: Program[]){
+
         fs.writeFile('./data/radio.json', JSON.stringify(result), {flag: 'a'}, (err: any) => {
             if(err) {
                 console.error(err);
@@ -68,17 +67,24 @@ export class Crawler{
         });
     }
     */
-
-    async initCrawl(){
-        const html = await this.getHtml();
+    async getContext(url: string){
+        const html = await this.getHtml(url);
         const $element = await this.loadHtml(html);
-        this.programItem = await this.getProgramInfo($element);
+        const contextUrls : string[] = [];
+        $element(".list.ect-entry-card.front-page-type-index").children().each(function(idx, ele){
+            contextUrls.push($element(ele).attr("href") || "");
+        });
+        // console.log(contextUrls);
+        return contextUrls;
+    }
+    async startCrawl(url: string){
+        const html = await this.getHtml(url);
+        const $element = await this.loadHtml(html);
+        const programItem : Program = await this.getProgramInfo($element);
+        return programItem;
         // this.saveProgramItems(programItems);
     }
-    constructor(url:string){
-        this.url = url;
-        this.initCrawl();
-    }
+    constructor(){}
 }
 
 // const p1 = new Getprogram('https://radioupdate.net/nhkr1/sukisase/20211216/');
