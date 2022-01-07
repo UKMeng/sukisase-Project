@@ -5,7 +5,7 @@ const sukisaseCrawler = new Crawler();
 let urls : string[] = [];
 // 获取所有节目信息url
 async function getContext(){
-    for(let page = 1; page <= 6; page++){
+    for(let page = 3; page <= 6; page++){
         let url = "https://radioupdate.net/category/nhkr1/sukisase/page/" + page + "/";
         const retUrls = await sukisaseCrawler.getContext(url)
         urls = urls.concat(retUrls);

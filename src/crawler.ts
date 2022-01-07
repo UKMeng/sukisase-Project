@@ -34,7 +34,7 @@ export class Crawler{
         const programGuest : string = (perfromerName.length == 0) ? '戸松遥' : perfromerName[0];
 
         // 获取放送日期
-        const oaDay : string = $element(".entry-content.cf > h3").text().replace(/\D/ig,'');
+        const oaDay : string = $element(".entry-title").text().replace(/\D/ig,'').replace(/^03/, '');
 
         // 获取短剧标题
         const intro = $element(".entry-content.cf > p").text();
