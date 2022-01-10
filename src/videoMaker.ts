@@ -17,7 +17,7 @@ function videoProcess(videoName:string, audioName:string){
         .input('color=c=black:s=1280x720:r=5')
         .inputOption('-f lavfi')
         .output(videoName)
-        .outputOption(['-crf 0', '-c:a copy', '-shortest'])
+        .outputOption(['-crf 0', '-c:a copy', '-shortest', '-c:v h264_nvenc'])
         .on('progress', function(info:any){
             slog('progress ' + info.percent.toFixed(2) + '%');
         })
