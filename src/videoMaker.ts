@@ -12,7 +12,7 @@ let totalNum = audioNames.length - 1;
 
 // ffmpeg -f lavfi -i color=c=black:s=1280x720:r=5 -i audio.mp3 -crf 0 -c:a copy -shortest output.mp4
 function videoProcess(videoName:string, audioName:string){
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
         ffmpeg(audioName)
         .input('color=c=black:s=1280x720:r=5')
         .inputOption('-f lavfi')
@@ -25,7 +25,7 @@ function videoProcess(videoName:string, audioName:string){
             count++;
             console.log('');
             console.log(count + '/' + totalNum + ' success: ' + audioName);
-            resolve(1);
+            resolve();
         })
         .run();
     })
