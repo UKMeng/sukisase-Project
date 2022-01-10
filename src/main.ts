@@ -18,7 +18,7 @@ async function getAndSaveInfo(){
     let progress = 0;
     let programItems : Program[] = [];
     console.log("Success: " + urls.length + "urls");
-    for(let count = 1; count <= urls.length; count++) {
+    for(let count = 1; count < urls.length; count++) {
         await sukisaseCrawler.startCrawl(urls[count-1]).then((retItem) => {
             programItems.push(retItem);
             progress++;
