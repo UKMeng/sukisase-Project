@@ -26,7 +26,6 @@
     "cheerio": "^1.0.0-rc.10",
     "fluent-ffmpeg": "^2.1.2",
     "single-line-log": "^1.1.2",
-    "superagent": "^6.1.0",
-    "youtube-dl-exec": "^2.0.2"
+    "superagent": "^6.1.0"
   }
 }
