@@ -41,7 +41,7 @@ tsc --init
 -   @alpacamybags118/yt-dlp-exec (用来下载YouTube视频，youtube-dl太慢了）
 -   fluent-ffmpeg (处理视频)
 
-以及两个声明模块
+以及声明模块
 -   @types/superagent
 -   @types/cheerio
 -   @types/fluent-ffmpeg
